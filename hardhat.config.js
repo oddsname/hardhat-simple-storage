@@ -8,7 +8,7 @@ require('hardhat-gas-reporter');
 const {
     GANACHE_KEY, GANACHE_URL,
     SEPOLIA_KEY, SEPOLIA_URL,
-    ETHERSCAN_KEY
+    ETHERSCAN_KEY, COINMARKETCAP_KEY,
 } = process.env;
 
 module.exports = {
@@ -35,6 +35,11 @@ module.exports = {
     },
     gasReporter: {
         enabled: true,
+        outputFile: 'gas-report.txt',
+        noColors: true, //because we output to a file
+        currency: 'USD',
+        coinmarketcap: COINMARKETCAP_KEY, // comment out if you don't need api requests
+        token: 'MATIC', //we can select different networks by specifying the currency and get actual price inside these networks
     },
     solidity: "0.8.18",
 };
