@@ -13,10 +13,10 @@ async function main() {
     const simpleStorage = await simpleStorageFactory.deploy();
     await simpleStorage.deployed();
 
-    await simpleStorage.deployTransaction.wait(6);
     console.log(`Deployed address: ${simpleStorage.address}`)
 
     if(network.config.name === 'sepolia' && process.env.ETHERSCAN_KEY) {
+        await simpleStorage.deployTransaction.wait(6);
         await verify(simpleStorage.address)
     }
 
