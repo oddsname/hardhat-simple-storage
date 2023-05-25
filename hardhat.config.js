@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 require('./tasks/block-number')
+require('hardhat-gas-reporter');
 
 const {
     GANACHE_KEY, GANACHE_URL,
@@ -31,6 +32,9 @@ module.exports = {
     },
     etherscan: {
         apiKey: ETHERSCAN_KEY
+    },
+    gasReporter: {
+        enabled: true,
     },
     solidity: "0.8.18",
 };
